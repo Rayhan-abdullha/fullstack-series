@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import express, { Application } from "express";
 import config from "./config";
 import cors from "cors";
+import userRoutes from "./modules/users/user.routes";
 
 const app: Application = express();
 
@@ -14,8 +15,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use("/api/v1/users", userRoutes);
 
-app.get("/", (req: express.Request, res: express.Response) => {
-  res.send("Hello, World!");
-});
 export default app;
